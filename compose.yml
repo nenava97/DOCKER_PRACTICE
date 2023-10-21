@@ -1,0 +1,18 @@
+
+services:
+  
+  app-container:
+    build:
+      dockerfile: /home/ubuntu/Docker_Practice/Dockerfile
+    ports:
+      - "8000:8000"
+  
+  nginx-container:
+    build:
+      context: .
+      dockerfile: /home/ubuntu/Docker_Practice/Dockerfile.nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app-container
+
